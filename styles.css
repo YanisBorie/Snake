@@ -1,0 +1,31 @@
+ @import url("https://fonts.cdnfonts.com/css/dekko");
+ @import url('https://fonts.cdnfonts.com/css/comica');
+
+body {
+    background-image: url("Images/fond.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: comica;
+    font-size: 52px;
+    color: #B97A57;
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+div {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    background-color: #A2D149;
+    font-family: dekko;
+    font-size: 26px;
+    text-align: center;
+    border: solid 5px #B97A57;
+    border-radius: 30px;
+    width: 215px;
+    padding: 25px;
+}
