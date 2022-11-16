@@ -2,17 +2,35 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="styles.css"/>
     <title>Snake</title>
 </head>
 <body>
     <h1 id="titre">Snake</h1>
-    <div class="btn" id="facile">Easy</div>
-    <div class="btn" id="moyen">Medium</div>
-    <div class="btn" id="difficile">Hard</div>
-    <script src="script.js"></script>
+    <div id="facile">Easy</div>
+    <div id="moyen">Medium</div>
+    <div id="difficile">Hard</div>
 
-    <canvas id="mycanvas1" width="320" height="320"></canvas>
+    <section id="menuJeu">
+        <article id="scoreboard">
+            <h4>Javascript Snake</h4>
+            <p id="score">Score : 0</p>
+            <p id="difficulte">Difficulté : "valeur"</p>
+            <p>Commandes de jeu :</p>
+            <img src="Images/arrow.png" alt="Flèches directionnelles" width="220px" height="130">
+        </article>
+
+        <article>
+            <canvas id="mycanvas1" width="320" height="320"></canvas>
+        </article>
+
+        <article>
+            <div id="reessayer">Réessayer</div>
+            <div id="retour">Retour au Menu</div>
+        </article>
+    </section>
+
+    <script src="script.js"></script>
     <script src="canvas.js"></script>
 </body>
 </html>
