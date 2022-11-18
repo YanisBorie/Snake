@@ -1,15 +1,16 @@
 let world = [
-    ['EMPTY', 'FOOD', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
+    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
+    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'FOOD', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'SNAKE', 'SNAKE', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'SNAKE', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
+    ['EMPTY', 'SNAKE', 'SNAKE', 'SNAKE', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
     ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
   ];
+let snake = [[8,1], [8,2], [8,3]];
 var canvas = document.getElementById('mycanvas1');
 var ctx = canvas.getContext('2d');
 
@@ -50,8 +51,41 @@ function creerDamier() {
     }
 }
 
+function step(key) {
+    console.log(key.code);
+    if (key.code == "ArrowUp") {
+        snake.push([snake[2][0]-1,snake[2][1]]);
+        let oldPosition = snake.shift();
+        world[oldPosition[0]][oldPosition[1]] = "EMPTY";
+        world[snake[2][0]][snake[2][1]] = "SNAKE";
+        creerDamier();
+    }
+    else if (key.code == "ArrowLeft") {
+        snake.push([snake[2][0],snake[2][1]-1]);
+        let oldPosition = snake.shift();
+        world[oldPosition[0]][oldPosition[1]] = "EMPTY";
+        world[snake[2][0]][snake[2][1]] = "SNAKE";
+        creerDamier();
+    }
+    else if (key.code == "ArrowRight") {
+        snake.push([snake[2][0],snake[2][1]+1]);
+        let oldPosition = snake.shift();
+        world[oldPosition[0]][oldPosition[1]] = "EMPTY";
+        world[snake[2][0]][snake[2][1]] = "SNAKE";
+        creerDamier();
+    }
+    else if (key.code == "ArrowDown") {
+        snake.push([snake[2][0]+1,snake[2][1]]);
+        let oldPosition = snake.shift();
+        world[oldPosition[0]][oldPosition[1]] = "EMPTY";
+        world[snake[2][0]][snake[2][1]] = "SNAKE";
+        creerDamier();
+    }
+}
+
 function main() {
     creerDamier();
+    var key = addEventListener("keydown", step);
 }
 
 main();
