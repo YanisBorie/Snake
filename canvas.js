@@ -58,7 +58,6 @@ function creerDamier() {
 
 function move() {
     if (snake[2][0] == food[0][0] && snake[2][1] == food[0][1]) {
-        console.log("test");
         score += 1;
         document.getElementById("score").textContent = "Score : " + score;
         apparitionPomme();
