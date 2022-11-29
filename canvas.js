@@ -19,6 +19,7 @@ var ctx = canvas.getContext('2d');
 let direction;
 
 document.getElementById("reessayer").addEventListener("click", restart);
+document.getElementById("retour").addEventListener("click", retourMenu);
 
 ctx.fillStyle = "#B97A57"; // Les remplissages
 ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -142,6 +143,16 @@ function restart() {
     score = 0;
     document.getElementById("score").textContent = "Score : " + score;
     main();
+}
+
+function retourMenu() {
+
+    document.getElementById("facile").style.display = "block";
+    document.getElementById("moyen").style.display = "block";
+    document.getElementById("difficile").style.display = "block";
+    document.getElementById("menuJeu").style.display = "none";
+    clearInterval(interval);
+    restart();
 }
 
 function main() {
