@@ -24,19 +24,19 @@ function change() {
 }
 
 function modeFacile() {
-    url = "/Difficultes/facile.json";
+    url = "./Difficultes/facile.json";
     difficulte(url);
     change();
 }
 
 function modeMoyen() {
-    url = "/Difficultes/moyen.json";
+    url = "./Difficultes/moyen.json";
     difficulte(url);
     change();
 }
 
 function modeDifficile() {
-    url = "/Difficultes/difficile.json";
+    url = "./Difficultes/difficile.json";
     difficulte(url);
     change();
 }
@@ -53,13 +53,13 @@ function difficulte(url) {
         })
         .then (function(data) {
             // traitement des données reçues
-            if(url === "/Difficultes/facile.json") {
+            if(url === "./Difficultes/facile.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Facile";
             }
-            if(url === "/Difficultes/moyen.json") {
+            if(url === "./Difficultes/moyen.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Moyenne";
             }
-            if(url === "/Difficultes/difficile.json") {
+            if(url === "./Difficultes/difficile.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Difficile";
             }
             time = data.delay;
@@ -76,6 +76,7 @@ function main() {
     moyen.addEventListener('click', modeMoyen);
     difficile.addEventListener('click', modeDifficile);
     retour.addEventListener('click', retourMenu);
+    
 }
 
 main();

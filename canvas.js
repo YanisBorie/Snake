@@ -224,6 +224,11 @@ function perdre() {
     // Permet de faire apparaître le bouton reessayer
     document.getElementById("reessayer").style.display = "block";
     console.log("GAME OVER");
+    canvas.style.opacity = "0.75";
+    ctx.fillStyle = "#BB0B0B";
+    ctx.textAlign = "center";
+    ctx.font = '56px comica';
+    ctx.fillText('Gamer Over', 160, 160);
     // Permet d'arrêter l'avancement automatique du serpent
     clearInterval(interval);
 }
@@ -253,7 +258,7 @@ function restart() {
     score = 0;
     document.getElementById("score").textContent = "Score : " + score;
     canvas.style.opacity = 1;
-    lancement();
+    main();
 }
 
 // Fonction retourMenu qui permet de retourner au menu d'accueil
@@ -274,7 +279,7 @@ function main() {
     // Création de l'évènement "keydown" qui va enregistrer la touche appuyée
     var key = addEventListener("keydown", step);
     // Création de la vitesse du serpent
-    interval = setInterval(move, 500);
+    interval = setInterval(move, time);
 }
 
 main();
