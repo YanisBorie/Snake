@@ -87,7 +87,7 @@ function move() {
         allongeSerpent();
     }
     // Test afin de savoir si le prochain déplacement du serpent sort du damier
-    if (snake[snake.length-1][0]-1 < 0 || snake[snake.length-1][0]+1 > 9 || snake[snake.length-1][1]+1 > 9 || snake[snake.length-1][1]-1 < 0) {
+    if (snake[snake.length-1][0] < 0 || snake[snake.length-1][0] > 9 || snake[snake.length-1][1] > 9 || snake[snake.length-1][1] < 0) {
         perdre();
     } else {
         // Test afin de savoir si le serpent se déplace en haut
@@ -223,6 +223,11 @@ function allongeSerpent(){
 function perdre() {
     // Permet de faire apparaître le bouton reessayer
     document.getElementById("reessayer").style.display = "block";
+    canvas.style.opacity = 0.75;
+    ctx.font = "56px comica";
+    ctx.fillStyle = "#BB0B0B";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", 160, 160);
     console.log("GAME OVER");
     // Permet d'arrêter l'avancement automatique du serpent
     clearInterval(interval);
@@ -251,7 +256,8 @@ function restart() {
     // Réinitialisation du score
     score = 0;
     document.getElementById("score").textContent = "Score : " + score;
-    main();
+    canvas.style.opacity = 1;
+    lancement();
 }
 
 // Fonction retourMenu qui permet de retourner au menu d'accueil
@@ -266,13 +272,11 @@ function retourMenu() {
 }
 
 // Fonction main
-function main() {
+function lancement() {
     // Création du damier
     creerDamier();
     // Création de l'évènement "keydown" qui va enregistrer la touche appuyée
     var key = addEventListener("keydown", step);
     // Création de la vitesse du serpent
-    interval = setInterval(move, 500);
+    interval = setInterval(move, time);
 }
-
-main();
