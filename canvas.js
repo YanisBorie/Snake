@@ -22,10 +22,16 @@ var interval;
 var canvas = document.getElementById('mycanvas1');
 var ctx = canvas.getContext('2d');
 let direction;
+var url;
+var time;
+var facile = document.getElementById("facile");
+var moyen = document.getElementById("moyen");
+var difficile = document.getElementById("difficile");
+var retour = document.getElementById("retour");
 
 // Récupération des boutons réessayer et retour
 document.getElementById("reessayer").addEventListener("click", restart);
-document.getElementById("retour").addEventListener("click", retourMenu);
+document.getElementById("retour").addEventListener("click", retourAuMenu);
 
 // Remplissage du canvas
 ctx.fillStyle = "#B97A57"; // Les remplissages
@@ -39,7 +45,7 @@ function creerDamier() {
     for (let i=0; i<world.length; i++){
         for (let j=0; j<world.length; j++){
             // Choix de la couleur afin d'alterner le vert foncé et le vert clair
-            if ((j+i)%2 === 0) {
+            if ((j+i)%2 == 0) {
                 ctx.fillStyle = "#A2D149";
             }
             else {
@@ -49,20 +55,20 @@ function creerDamier() {
             ctx.beginPath();
             ctx.fillRect(pixelX, pixelY , 30, 30);
             // Dessin de la pomme
-            if (world[i][j] === "FOOD") {
-                //console.log("food");
+            if (world[i][j] == "FOOD") {
+                console.log("food");
                 ctx.fillStyle = "red";
                 ctx.beginPath();
                 ctx.fillRect(pixelX+5, pixelY+5, 20, 20);
             }
             // Dessin du serpent
-            if (world[i][j] === "SNAKE") {
-                //console.log("snake")
+            if (world[i][j] == "SNAKE") {
+                console.log("snake")
                 ctx.fillStyle = "blue";
                 ctx.beginPath();
                 ctx.fillRect(pixelX+5, pixelY+5, 20, 20);
                 // Dessin d'un rond blanc sur la tête du serpent afin de la discerner 
-                if ((i === snake[snake.length-1][0]) && (j === snake[snake.length-1][1])){
+                if ((i==snake[snake.length-1][0]) && (j==snake[snake.length-1][1])){
                     ctx.beginPath();
                     ctx.fillStyle = "white";
                     ctx.arc(pixelX+15, pixelY+15, 5, 0, 2 * Math.PI);
@@ -78,8 +84,9 @@ function creerDamier() {
 
 // Fonction move qui permet au serpent de se déplacer
 function move() {
+    clearInterval(interval);
     // Test afin de savoir si la tête du serpent est située sur la pomme
-    if (snake[snake.length-1][0] === food[0][0] && snake[snake.length-1][1] === food[0][1]) {
+    if (snake[snake.length-1][0] == food[0][0] && snake[snake.length-1][1] == food[0][1]) {
         // Ajoute 1 au score
         score += 1;
         document.getElementById("score").textContent = "Score : " + score;
@@ -87,7 +94,7 @@ function move() {
         allongeSerpent();
     }
     // Test afin de savoir si le prochain déplacement du serpent sort du damier
-    if (snake[snake.length-1][0] < 0 || snake[snake.length-1][0] > 9 || snake[snake.length-1][1] > 9 || snake[snake.length-1][1] < 0) {
+    if (snake[snake.length-1][0]-1 < 0 || snake[snake.length-1][0]+1 > 9 || snake[snake.length-1][1]+1 > 9 || snake[snake.length-1][1]-1 < 0) {
         perdre();
     } else {
         // Test afin de savoir si le serpent se déplace en haut
@@ -151,21 +158,21 @@ function move() {
 }
 
 // Fonction step qui enregistre la flèche directionnelle qui a été appuyée afin de connaître la direction du serpent
-function step(key) {
+function step(key) { 
     // Test afin de savoir si la touche directionnelle appuyée est la flèche du haut
-    if (key.code === "ArrowUp") {
+    if (key.code == "ArrowUp") {
         direction = 'UP';
     }
     // Test afin de savoir si la touche directionnelle appuyée est la flèche de gauche
-    else if (key.code === "ArrowLeft") {
+    else if (key.code == "ArrowLeft") {
         direction = 'LEFT';
     }
     // Test afin de savoir si la touche directionnelle appuyée est la flèche de droite
-    else if (key.code === "ArrowRight") {
+    else if (key.code == "ArrowRight") {
         direction = 'RIGHT';
     }
     // Test afin de savoir si la touche directionnelle appuyée est la flèche du bas
-    else if (key.code === "ArrowDown") {
+    else if (key.code == "ArrowDown") {
         direction = 'DOWN';
     }
 }
@@ -176,11 +183,11 @@ function apparitionPomme() {
     let x=Math.floor(Math.random(11)*10);
     let y=Math.floor(Math.random(11)*10);
     // Test afin de savoir si la case n'est pas vide. Si la case n'est pas vide, il faut prendre différentes coordonnées
-    if (world[x][y] !== "EMPTY") {
+    if (world[x][y]!="EMPTY") {
         apparitionPomme();
     }
     // Ecriture de "FOOD" dans le tableau world afin de pouvoir dessiner la pomme
-    world[x][y] = "FOOD";
+    world[x][y]="FOOD";
     food[0][0] = x;
     food[0][1] = y;
 }
@@ -188,7 +195,7 @@ function apparitionPomme() {
 // Fonction allongeSerpent qui permet d'allonger le serpent quand il mange une pomme
 function allongeSerpent(){
     // Test afin de savoir si la direction est "RIGHT" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction === 'RIGHT'){
+    if (direction=='RIGHT'){
         let x = snake[0][0];
         let y = snake[0][1]-1;
         // Ajout de la queue du serpent dans le tableau snake
@@ -197,21 +204,21 @@ function allongeSerpent(){
         world[x][y] = "SNAKE";
     }
     // Test afin de savoir si la direction est "LEFT" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction === 'LEFT'){
+    if (direction=='LEFT'){
         let x = snake[0][0];
         let y = snake[0][1]+1;
         snake.unshift([x,y]);
         world[x][y] = "SNAKE";
     }
     // Test afin de savoir si la direction est "UP" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction === 'UP'){
+    if (direction=='UP'){
         let x = snake[0][0]+1;
         let y = snake[0][1];
         snake.unshift([x,y]);
         world[x][y] = "SNAKE";
     }
     // Test afin de savoir si la direction est "DOWN" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction === 'DOWN'){
+    if (direction=='DOWN'){
         let x = snake[0][0];
         let y = snake[0][1]-1;
         snake.unshift([x,y]);
@@ -228,9 +235,8 @@ function perdre() {
     ctx.fillStyle = "#BB0B0B";
     ctx.textAlign = "center";
     ctx.font = '56px comica';
-    ctx.fillText('Gamer Over', 160, 160);
-    // Permet d'arrêter l'avancement automatique du serpent
-    clearInterval(interval);
+    ctx.fillText('Game Over', 160, 160);
+    // Permet d'arrêter l'avancement automatique du serpent}
 }
 
 // Fonction restart qui permet de recommencer le jeu
@@ -257,29 +263,88 @@ function restart() {
     // Réinitialisation du score
     score = 0;
     document.getElementById("score").textContent = "Score : " + score;
-    canvas.style.opacity = 1;
     main();
 }
 
-// Fonction retourMenu qui permet de retourner au menu d'accueil
-function retourMenu() {
+// Fonction retourAuMenu qui permet de retourner au menu d'accueil
+function retourAuMenu() {
     // Récupération des boutons facile, moyen et difficile (easy, medium et hard sur le menu d'accueil)
     document.getElementById("facile").style.display = "block";
     document.getElementById("moyen").style.display = "block";
     document.getElementById("difficile").style.display = "block";
     document.getElementById("menuJeu").style.display = "none";
-    clearInterval(interval);
+    var menuJeu = document.getElementById("menuJeu");
+    menuJeu.style.display = "none";
+    facile.style.display = "block";
+    moyen.style.display = "block";
+    difficile.style.display = "block";
     restart();
 }
 
+function change() {
+    var menuJeu = document.getElementById("menuJeu");
+    facile.style.display = "none";
+    moyen.style.display = "none";
+    difficile.style.display = "none";
+    menuJeu.style.display = "flex";
+}
+
+function modeFacile() {
+    url = "./Difficultes/facile.json";
+    difficulte(url);
+    change();
+}
+
+function modeMoyen() {
+    url = "./Difficultes/moyen.json";
+    difficulte(url);
+    change();
+}
+
+function modeDifficile() {
+    url = "./Difficultes/difficile.json";
+    difficulte(url);
+    change();
+}
+
+function difficulte(url) {
+    fetch(url)
+        .then(function(response) {
+            if (response.ok) {
+                return response.json(); // une promesse
+            } else {
+                throw ("Error " + response.status);
+            }
+        })
+        .then (function(data) {
+            // traitement des données reçues
+            if(url === "./Difficultes/facile.json") {
+                document.getElementById("difficulte").innerHTML = "Difficulté : Facile";
+            }
+            if(url === "./Difficultes/moyen.json") {
+                document.getElementById("difficulte").innerHTML = "Difficulté : Moyenne";
+            }
+            if(url === "./Difficultes/difficile.json") {
+                document.getElementById("difficulte").innerHTML = "Difficulté : Difficile";
+            }
+            time = data.delay;
+            interval = setInterval(move, time);
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+    }
+    
 // Fonction main
 function main() {
     // Création du damier
     creerDamier();
     // Création de l'évènement "keydown" qui va enregistrer la touche appuyée
     var key = addEventListener("keydown", step);
-    // Création de la vitesse du serpent
-    interval = setInterval(move, time);
+    facile.addEventListener('click', modeFacile);
+    moyen.addEventListener('click', modeMoyen);
+    difficile.addEventListener('click', modeDifficile);
+    retour.addEventListener('click', retourAuMenu);
 }
 
 main();
