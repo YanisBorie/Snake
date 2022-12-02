@@ -356,6 +356,7 @@ function main() {
     creerDamier();
     // Création de l'évènement "keydown" qui va enregistrer la touche appuyée
     var key = addEventListener("keydown", step);
+    // Ajout des listeners aux boutons facile, moyen, difficile et retour
     facile.addEventListener('click', modeFacile);
     moyen.addEventListener('click', modeMoyen);
     difficile.addEventListener('click', modeDifficile);
