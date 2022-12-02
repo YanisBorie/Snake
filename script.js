@@ -24,12 +24,12 @@ var ctx = canvas.getContext('2d');
 let direction;
 var url;
 var time;
+// Récupération des boutons facile, moyen et difficile
 var facile = document.getElementById("facile");
 var moyen = document.getElementById("moyen");
 var difficile = document.getElementById("difficile");
-var retour = document.getElementById("retour");
 
-// Récupération des boutons réessayer et retour
+// Récupération des boutons réessayer et retour et ajout des listeners
 document.getElementById("reessayer").addEventListener("click", restart);
 document.getElementById("retour").addEventListener("click", retourAuMenu);
 
@@ -232,12 +232,13 @@ function perdre() {
     ctx.fillStyle = "#BB0B0B";
     ctx.textAlign = "center";
     ctx.font = '56px comica';
+    // Affiche Game Over
     ctx.fillText('Game Over', 160, 160);
     // Permet d'arrêter l'avancement automatique du serpent
     clearInterval(interval);
 }
 
-// Fonction qui réinitialise l'état du jeu
+// Fonction qui permet de réinitialiser l'état du jeu
 function reinitialiseJeu() {
     // Permet de faire disparaître le bouton reessayer
     document.getElementById("reessayer").style.display = "none";
@@ -268,13 +269,14 @@ function reinitialiseJeu() {
 // Fonction restart qui permet de recommencer le jeu
 function restart() {
     reinitialiseJeu();
+    // Affectation de la vitesse du serpent
     interval = setInterval(move, time);
 }
 
 // Fonction retourAuMenu qui permet de retourner au menu d'accueil
 function retourAuMenu() {
     clearInterval(interval);
-    // Récupération des boutons facile, moyen et difficile (easy, medium et hard sur le menu d'accueil)
+    // Apparition du menu et disparition de la page de jeu
     document.getElementById("facile").style.display = "block";
     document.getElementById("moyen").style.display = "block";
     document.getElementById("difficile").style.display = "block";
@@ -287,6 +289,7 @@ function retourAuMenu() {
     reinitialiseJeu();
 }
 
+// Fonction change qui permet de passer du menu à la page de jeu
 function change() {
     var menuJeu = document.getElementById("menuJeu");
     facile.style.display = "none";
@@ -295,25 +298,28 @@ function change() {
     menuJeu.style.display = "flex";
 }
 
+// Fonction modeFacile qui permet de choisir la difficulté facile
 function modeFacile() {
-
     url = "./Difficultes/facile.json";
     difficulte(url);
     change();
 }
 
+// Fonction modeMoyen qui permet de choisir la difficulté moyen
 function modeMoyen() {
     url = "./Difficultes/moyen.json";
     difficulte(url);
     change();
 }
 
+// Fonction modeDifficile qui permet de choisir la difficulté difficile
 function modeDifficile() {
     url = "./Difficultes/difficile.json";
     difficulte(url);
     change();
 }
 
+// Fonction difficulte qui permet d'accéder au fichier json correspondant à la difficulté sélectionnée
 function difficulte(url) {
     fetch(url)
         .then(function(response) {
@@ -334,7 +340,9 @@ function difficulte(url) {
             if(url === "./Difficultes/difficile.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Difficile";
             }
+            // Affecte à time la vitesse du serpent 
             time = data.delay;
+            // Affectation de la vitesse du serpent
             interval = setInterval(move, time);
         })
         .catch(function (err) {
