@@ -1,20 +1,38 @@
 // Création du monde
 let world = [
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'FOOD', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'SNAKE', 'SNAKE', 'SNAKE', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-    ['EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY'],
-  ];
+    ['WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'FOOD', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'SNAKE', 'SNAKE', 'SNAKE', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL'],
+];
 
-  // Création du serpent et de la pomme, avec des coordonnées prédéfinies 
-let snake = [[8,1], [8,2], [8,3]];
-let food = [[1,8]];
+// Création du serpent et de la pomme, avec des coordonnées prédéfinies 
+let snake = [[9, 2], [9, 3], [9, 4]];
+let food = [[2, 9]];
+
+//Copie du world
+let saveWorld = [
+    ['WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'FOOD', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'SNAKE', 'SNAKE', 'SNAKE', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'EMPTY', 'WALL'],
+    ['WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL', 'WALL'],
+];;
 
 // Création des différentes variables et récupération du canvas
 let score = 0;
@@ -25,130 +43,146 @@ let direction;
 var url;
 var time;
 // Récupération des boutons facile, moyen et difficile
-var facile = document.getElementById("facile");
-var moyen = document.getElementById("moyen");
-var difficile = document.getElementById("difficile");
+var menuDifficulty = document.getElementById("menuDifficulty");
 
 // Récupération des boutons réessayer et retour et ajout des listeners
 document.getElementById("reessayer").addEventListener("click", restart);
-document.getElementById("retour").addEventListener("click", retourAuMenu);
 
-// Remplissage du canvas
-ctx.fillStyle = "#B97A57"; // Les remplissages
-ctx.fillRect(0,0,canvas.width,canvas.height);
+
 
 // Fonction creerDamier qui permet de dessiner le damier ainsi que la pomme et le serpent
 function creerDamier() {
     // pixelX et pixelY commencent à 10 afin de créer un contour
-    let pixelX=10;
-    let pixelY=10;
-    for (let i=0; i<world.length; i++){
-        for (let j=0; j<world.length; j++){
+    let pixelX = 10;
+    let pixelY = 10;
+    for (let i = 0; i < world.length; i++) {
+        for (let j = 0; j < world.length; j++) {
             // Choix de la couleur afin d'alterner le vert foncé et le vert clair
-            if ((j+i)%2 == 0) {
-                ctx.fillStyle = "#A2D149";
+            if ((j + i) % 2 == 0) {
+                ctx.fillStyle = "#E3E1E5";
             }
             else {
-                ctx.fillStyle = "#AAD751";
+                ctx.fillStyle = "white";
             }
             // Dessin du damier
             ctx.beginPath();
-            ctx.fillRect(pixelX, pixelY , 30, 30);
+            ctx.fillRect(pixelX, pixelY, 30, 30);
+            // Dessin des murs
+            if (world[i][j] == "WALL") {
+                ctx.fillStyle = "black";
+                ctx.beginPath();
+                ctx.fillRect(pixelX, pixelY, 30, 30);
+            }
             // Dessin de la pomme
             if (world[i][j] == "FOOD") {
                 ctx.fillStyle = "red";
                 ctx.beginPath();
-                ctx.fillRect(pixelX+5, pixelY+5, 20, 20);
+                ctx.fillRect(pixelX + 5, pixelY + 5, 20, 20);
             }
             // Dessin du serpent
             if (world[i][j] == "SNAKE") {
-                ctx.fillStyle = "blue";
+                ctx.fillStyle = "#FF4081";
                 ctx.beginPath();
-                ctx.fillRect(pixelX+5, pixelY+5, 20, 20);
+                ctx.fillRect(pixelX + 5, pixelY + 5, 20, 20);
                 // Dessin d'un rond blanc sur la tête du serpent afin de la discerner 
-                if ((i==snake[snake.length-1][0]) && (j==snake[snake.length-1][1])){
+                if ((i == snake[snake.length - 1][0]) && (j == snake[snake.length - 1][1])) {
                     ctx.beginPath();
                     ctx.fillStyle = "white";
-                    ctx.arc(pixelX+15, pixelY+15, 5, 0, 2 * Math.PI);
+                    ctx.arc(pixelX + 15, pixelY + 15, 5, 0, 2 * Math.PI);
                     ctx.fill();
                 }
             }
-            pixelX+=30;
+            pixelX += 30;
         }
-        pixelY+=30;
-        pixelX=10;
+        pixelY += 30;
+        pixelX = 10;
     }
 }
 
 // Fonction move qui permet au serpent de se déplacer
 function move() {
-    console.log('INTERVAL !');
+    let nextX, nextY;
+    // Trouver les coordonnées du prochain mouvement du serpent en fonction de la direction
+    if (direction === 'UP') {
+        nextX = snake[snake.length - 1][0] - 1;
+        nextY = snake[snake.length - 1][1];
+    } else if (direction === 'LEFT') {
+        nextX = snake[snake.length - 1][0];
+        nextY = snake[snake.length - 1][1] - 1;
+    } else if (direction === 'RIGHT') {
+        nextX = snake[snake.length - 1][0];
+        nextY = snake[snake.length - 1][1] + 1;
+    } else if (direction === 'DOWN') {
+        nextX = snake[snake.length - 1][0] + 1;
+        nextY = snake[snake.length - 1][1];
+    }
     // Test afin de savoir si la tête du serpent est située sur la pomme
-    if (snake[snake.length-1][0] == food[0][0] && snake[snake.length-1][1] == food[0][1]) {
+    if (snake[snake.length - 1][0] == food[0][0] && snake[snake.length - 1][1] == food[0][1]) {
         // Ajoute 1 au score
         score += 1;
         document.getElementById("score").textContent = "Score : " + score;
-        apparitionPomme();
         allongeSerpent();
+        apparitionPomme();
     }
-    // Test afin de savoir si le prochain déplacement du serpent sort du damier
-    if (snake[snake.length-1][0]-1 < 0 || snake[snake.length-1][0]+1 > 9 || snake[snake.length-1][1]+1 > 9 || snake[snake.length-1][1]-1 < 0) {
+    // Test afin de savoir si le prochain déplacement du serpent sera sur un mur
+    if (world[nextX][nextY] === 'WALL') {
         perdre();
+        return;
     } else {
         // Test afin de savoir si le serpent se déplace en haut
         if (direction === 'UP') {
             // Test afin de savoir si le serpent se touche
-            if (world[snake[snake.length-1][0]-1][snake[snake.length-1][1]] === "SNAKE") {
+            if (world[snake[snake.length - 1][0] - 1][snake[snake.length - 1][1]] === "SNAKE") {
                 perdre();
             }
-            else{
+            else {
                 // Permet au serpent d'avancer en haut
-                snake.push([snake[snake.length-1][0]-1,snake[snake.length-1][1]]);
+                snake.push([snake[snake.length - 1][0] - 1, snake[snake.length - 1][1]]);
                 let oldPosition = snake.shift();
                 world[oldPosition[0]][oldPosition[1]] = "EMPTY";
-                world[snake[snake.length-1][0]][snake[snake.length-1][1]] = "SNAKE";
+                world[snake[snake.length - 1][0]][snake[snake.length - 1][1]] = "SNAKE";
                 creerDamier();
             }
         }
         // Test afin de savoir si le serpent se déplace à gauche
         else if (direction === 'LEFT') {
-            if (world[snake[snake.length-1][0]][snake[snake.length-1][1]-1] === "SNAKE"){
+            if (world[snake[snake.length - 1][0]][snake[snake.length - 1][1] - 1] === "SNAKE") {
                 perdre();
             }
             else {
                 // Permet au serpent d'avancer à gauche
-                snake.push([snake[snake.length-1][0],snake[snake.length-1][1]-1]);
+                snake.push([snake[snake.length - 1][0], snake[snake.length - 1][1] - 1]);
                 let oldPosition = snake.shift();
                 world[oldPosition[0]][oldPosition[1]] = "EMPTY";
-                world[snake[snake.length-1][0]][snake[snake.length-1][1]] = "SNAKE";
+                world[snake[snake.length - 1][0]][snake[snake.length - 1][1]] = "SNAKE";
                 creerDamier();
             }
         }
         // Test afin de savoir si le serpent se déplace à droite
         else if (direction === 'RIGHT') {
-            if (world[snake[snake.length-1][0]][snake[snake.length-1][1]+1] === "SNAKE") {
+            if (world[snake[snake.length - 1][0]][snake[snake.length - 1][1] + 1] === "SNAKE") {
                 perdre();
             }
             else {
                 // Permet au serpent d'avancer à droite
-                snake.push([snake[snake.length-1][0],snake[snake.length-1][1]+1]);
+                snake.push([snake[snake.length - 1][0], snake[snake.length - 1][1] + 1]);
                 let oldPosition = snake.shift();
                 world[oldPosition[0]][oldPosition[1]] = "EMPTY";
-                world[snake[snake.length-1][0]][snake[snake.length-1][1]] = "SNAKE";
+                world[snake[snake.length - 1][0]][snake[snake.length - 1][1]] = "SNAKE";
                 creerDamier();
             }
-            }
+        }
         // Test afin de savoir si le serpent se déplace en bas
         else if (direction === 'DOWN') {
-            if (world[snake[snake.length-1][0]+1][snake[snake.length-1][1]] === "SNAKE") {
+            if (world[snake[snake.length - 1][0] + 1][snake[snake.length - 1][1]] === "SNAKE") {
                 perdre();
             }
             else {
                 // Permet au serpent d'avancer en bas
-                snake.push([snake[snake.length-1][0]+1,snake[snake.length-1][1]]);
+                snake.push([snake[snake.length - 1][0] + 1, snake[snake.length - 1][1]]);
                 let oldPosition = snake.shift();
                 world[oldPosition[0]][oldPosition[1]] = "EMPTY";
-                world[snake[snake.length-1][0]][snake[snake.length-1][1]] = "SNAKE";
+                world[snake[snake.length - 1][0]][snake[snake.length - 1][1]] = "SNAKE";
                 creerDamier();
             }
         }
@@ -156,7 +190,7 @@ function move() {
 }
 
 // Fonction step qui enregistre la flèche directionnelle qui a été appuyée afin de connaître la direction du serpent
-function step(key) { 
+function step(key) {
     // Test afin de savoir si la touche directionnelle appuyée est la flèche du haut
     if (key.code == "ArrowUp") {
         direction = 'UP';
@@ -178,48 +212,50 @@ function step(key) {
 // Fonction apparitionPomme qui permet de faire réapparaître la pomme si elle a été mangée
 function apparitionPomme() {
     // Choix aléatoire des nouvelles coordonnées de la pomme
-    let x=Math.floor(Math.random(11)*10);
-    let y=Math.floor(Math.random(11)*10);
+    let x;
+    let y;
     // Test afin de savoir si la case n'est pas vide. Si la case n'est pas vide, il faut prendre différentes coordonnées
-    if (world[x][y]!="EMPTY") {
-        apparitionPomme();
-    }
+    do {
+        x = Math.floor(Math.random() * (12 - 2)) + 2;
+        y = Math.floor(Math.random() * (12 - 2)) + 2;
+    } while (world[x][y] != "EMPTY");
+
     // Ecriture de "FOOD" dans le tableau world afin de pouvoir dessiner la pomme
-    world[x][y]="FOOD";
+    world[x][y] = "FOOD";
     food[0][0] = x;
     food[0][1] = y;
 }
 
 // Fonction allongeSerpent qui permet d'allonger le serpent quand il mange une pomme
-function allongeSerpent(){
+function allongeSerpent() {
     // Test afin de savoir si la direction est "RIGHT" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction=='RIGHT'){
+    if (direction == 'RIGHT') {
         let x = snake[0][0];
-        let y = snake[0][1]-1;
+        let y = snake[0][1] - 1;
         // Ajout de la queue du serpent dans le tableau snake
-        snake.unshift([x,y]);
+        snake.unshift([x, y]);
         // Ecriture de "SNAKE" dans le tableau world afin de pouvoir dessiner la queue
         world[x][y] = "SNAKE";
     }
     // Test afin de savoir si la direction est "LEFT" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction=='LEFT'){
+    if (direction == 'LEFT') {
         let x = snake[0][0];
-        let y = snake[0][1]+1;
-        snake.unshift([x,y]);
+        let y = snake[0][1] + 1;
+        snake.unshift([x, y]);
         world[x][y] = "SNAKE";
     }
     // Test afin de savoir si la direction est "UP" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction=='UP'){
-        let x = snake[0][0]+1;
+    if (direction == 'UP') {
+        let x = snake[0][0] + 1;
         let y = snake[0][1];
-        snake.unshift([x,y]);
+        snake.unshift([x, y]);
         world[x][y] = "SNAKE";
     }
     // Test afin de savoir si la direction est "DOWN" afin d'ajouter la queue aux bonnes coordonnées
-    if (direction=='DOWN'){
+    if (direction == 'DOWN') {
         let x = snake[0][0];
-        let y = snake[0][1]-1;
-        snake.unshift([x,y]);
+        let y = snake[0][1] - 1;
+        snake.unshift([x, y]);
         world[x][y] = "SNAKE";
     }
 }
@@ -229,11 +265,11 @@ function perdre() {
     // Permet de faire apparaître le bouton reessayer
     document.getElementById("reessayer").style.display = "block";
     canvas.style.opacity = "0.75";
-    ctx.fillStyle = "#BB0B0B";
+    ctx.fillStyle = "#FF4081";
     ctx.textAlign = "center";
-    ctx.font = '56px comica';
+    ctx.font = '3.5em comica';
     // Affiche Game Over
-    ctx.fillText('Game Over', 160, 160);
+    ctx.fillText('Game Over', 190, 190);
     // Permet d'arrêter l'avancement automatique du serpent
     clearInterval(interval);
 }
@@ -244,18 +280,18 @@ function reinitialiseJeu() {
     document.getElementById("reessayer").style.display = "none";
     canvas.style.opacity = 1;
     // Réinitialisation du monde
-    for(let i = 0; i < world.length; i++) {
-        for(let j = 0; j < world.length; j++) {
-            world[i][j] = "EMPTY";
+    for (let i = 0; i < world.length; i++) {
+        for (let j = 0; j < world.length; j++) {
+            world[i][j] = saveWorld[i][j];
         }
     }
     // Réinitialisation du serpent
-    snake = [[8,1], [8,2], [8,3]];
+    snake = [[9, 2], [9, 3], [9, 4]];
     world[snake[0][0]][snake[0][1]] = "SNAKE";
     world[snake[1][0]][snake[1][1]] = "SNAKE";
     world[snake[2][0]][snake[2][1]] = "SNAKE";
     // Réinitialisation de la pomme
-    food = [[1,8]];
+    food = [[2, 9]];
     world[food[0][0]][food[0][1]] = "FOOD";
     // Réinitialisation de la direction
     direction = "";
@@ -277,24 +313,18 @@ function restart() {
 function retourAuMenu() {
     clearInterval(interval);
     // Apparition du menu et disparition de la page de jeu
-    document.getElementById("facile").style.display = "block";
-    document.getElementById("moyen").style.display = "block";
-    document.getElementById("difficile").style.display = "block";
+    document.getElementById("menuDifficulty").style.display = "flex";
     document.getElementById("menuJeu").style.display = "none";
     var menuJeu = document.getElementById("menuJeu");
     menuJeu.style.display = "none";
-    facile.style.display = "block";
-    moyen.style.display = "block";
-    difficile.style.display = "block";
+    menuDifficulty.style.display = "flex";
     reinitialiseJeu();
 }
 
 // Fonction change qui permet de passer du menu à la page de jeu
 function change() {
     var menuJeu = document.getElementById("menuJeu");
-    facile.style.display = "none";
-    moyen.style.display = "none";
-    difficile.style.display = "none";
+    menuDifficulty.style.display = "none"
     menuJeu.style.display = "flex";
 }
 
@@ -322,22 +352,22 @@ function modeDifficile() {
 // Fonction difficulte qui permet d'accéder au fichier json correspondant à la difficulté sélectionnée
 function difficulte(url) {
     fetch(url)
-        .then(function(response) {
+        .then(function (response) {
             if (response.ok) {
                 return response.json(); // une promesse
             } else {
                 throw ("Error " + response.status);
             }
         })
-        .then (function(data) {
+        .then(function (data) {
             // traitement des données reçues
-            if(url === "./Difficultes/facile.json") {
+            if (url === "./Difficultes/facile.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Facile";
             }
-            if(url === "./Difficultes/moyen.json") {
+            if (url === "./Difficultes/moyen.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Moyenne";
             }
-            if(url === "./Difficultes/difficile.json") {
+            if (url === "./Difficultes/difficile.json") {
                 document.getElementById("difficulte").innerHTML = "Difficulté : Difficile";
             }
             // Affecte à time la vitesse du serpent 
@@ -348,7 +378,7 @@ function difficulte(url) {
         .catch(function (err) {
             console.log(err);
         });
-    }
+}
 
 // Fonction main
 function main() {
@@ -356,11 +386,6 @@ function main() {
     creerDamier();
     // Création de l'évènement "keydown" qui va enregistrer la touche appuyée
     var key = addEventListener("keydown", step);
-    // Ajout des listeners aux boutons facile, moyen, difficile et retour
-    facile.addEventListener('click', modeFacile);
-    moyen.addEventListener('click', modeMoyen);
-    difficile.addEventListener('click', modeDifficile);
-    retour.addEventListener('click', retourAuMenu);
 }
 
 main();

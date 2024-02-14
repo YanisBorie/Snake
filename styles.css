@@ -1,56 +1,90 @@
  @import url("https://fonts.cdnfonts.com/css/dekko");
  @import url('https://fonts.cdnfonts.com/css/comica');
 
-body {
-    background-image: url("Images/fond.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+ * {
+     margin: 0;
+     padding: 0;
+ }
 
-h1 {
-    font-family: comica;
-    font-size: 52px;
-    color: #B97A57;
-    text-align: center;
-    margin-bottom: 75px;
-}
+ p {
+     font-family: dekko;
+ }
 
-div {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    background-color: #A2D149;
-    font-family: dekko;
-    font-size: 26px;
-    text-align: center;
-    border: solid 5px #B97A57;
-    border-radius: 30px;
-    width: 215px;
-    padding: 25px;
-    cursor: pointer;
-}
+ body {
+     background-color: var(--primary-color);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
 
-#scoreboard {
-    background-color: #A2D149;
-    font-family: dekko;
-    font-size: 26px;
-    border: solid 5px #B97A57;
-    border-radius: 30px;
-    width: 215px;
-    padding: 15px;
-}
+     --primary-color: #FF4081;
+ }
 
-h4 {
-    text-align: center;
-}
+ #menuDifficulty {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 25vw;
+     padding: 30px;
+     border: 1px solid #ccc;
+     border-radius: 8px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+     background-color: white;
+ }
 
-#menuJeu {
-    display: none;
-    justify-content: space-around;
-    vertical-align: middle;
-}
 
-#reessayer {
-    display: none;
-}
+ #menuDifficulty p {
+     margin-top: 30px;
+ }
+
+ button {
+     border-radius: 1vw;
+     font-size: 1.2em;
+     margin: 10px;
+     padding: 20px;
+     width: 20vw;
+     background-color: var(--primary-color);
+     border: none;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+     color: white;
+     font-weight: bold;
+ }
+
+ button:hover {
+     background-color: var(--primary-color);
+     cursor: pointer;
+ }
+
+ h1 {
+     font-family: comica;
+     font-size: 3.5em;
+     margin-bottom: 20px;
+     text-align: center;
+ }
+
+ #menuJeu {
+     display: none;
+     flex-direction: column;
+     justify-content: space-around;
+     width: 65vw;
+     padding: 30px;
+     border: 1px solid #ccc;
+     border-radius: 8px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+     background-color: white;
+ }
+
+ #menuJeu section {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: center;
+ }
+
+ .informations p {
+     font-size: 1.5em;
+ }
+
+ #reessayer {
+     display: none;
+ }

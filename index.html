@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css"/>
-    <title>Snake</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="/Images/serpent.png" type="image/x-icon">
+    <title>Snake.js</title>
 </head>
+
 <body>
-    <h1 id="titre">Snake</h1>
-    <div id="facile">Easy</div>
-    <div id="moyen">Medium</div>
-    <div id="difficile">Hard</div>
+    <main id="menuDifficulty">
+        <h1 id="titre">Snake.js</h1>
+        <button id="facile" onclick="modeFacile()">Easy</button>
+        <button id="moyen" onclick="modeMoyen()">Medium</button>
+        <button id="difficile" onclick="modeDifficile()">Hard</button>
+        <p>Développé.e par BROUTIER Charlène et BORIE Yanis</p>
+    </main>
 
-    <section id="menuJeu">
-        <article id="scoreboard">
-            <h4>Javascript Snake</h4>
-            <p id="score">Score : 0</p>
-            <p id="difficulte">Difficulté : "valeur"</p>
-            <p>Commandes de jeu :</p>
-            <img src="Images/arrow.png" alt="Flèches directionnelles" width="220px" height="130">
-        </article>
+    <main id="menuJeu">
+        <h1>Snake.js</h1>
+        <section>
+            <article class="informations">
+                <p id="score">Score : 0</p>
+                <p id="difficulte">Difficulté : "valeur"</p>
+                <p>Commandes de jeu :</p>
+                <img src="Images/arrow.png" alt="Flèches directionnelles" width="220px" height="130">
+            </article>
 
-        <article>
-            <canvas id="mycanvas1" width="320" height="320"></canvas>
-        </article>
+            <article>
+                <canvas id="mycanvas1" width="380" height="380"></canvas>
+            </article>
 
-        <article>
-            <div id="reessayer">Réessayer</div>
-            <div id="retour">Retour au Menu</div>
-        </article>
-    </section>
-    
+            <article>
+                <button id="reessayer" onclick="restart()">Réessayer</button>
+                <button id="retour" onclick="retourAuMenu()">Retour au Menu</button>
+            </article>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
+
 </html>
