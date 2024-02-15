@@ -262,14 +262,10 @@ function allongeSerpent() {
 
 // Fonction perdre qui permet d'arrêter le jeu
 function perdre() {
-    // Permet de faire apparaître le bouton reessayer
-    document.getElementById("reessayer").style.display = "block";
-    canvas.style.opacity = "0.75";
-    ctx.fillStyle = "#FF4081";
-    ctx.textAlign = "center";
-    ctx.font = '3.5em comica';
-    // Affiche Game Over
-    ctx.fillText('Game Over', 190, 190);
+    // Permet de faire apparaître le menu de GAME OVER
+    document.getElementById('popupBackground').style.animation = '1.25s fondu both';
+    document.getElementById('popupBackground').style.display = 'flex';
+    document.getElementById("popup").style.display = "flex";
     // Permet d'arrêter l'avancement automatique du serpent
     clearInterval(interval);
 }
@@ -277,8 +273,8 @@ function perdre() {
 // Fonction qui permet de réinitialiser l'état du jeu
 function reinitialiseJeu() {
     // Permet de faire disparaître le bouton reessayer
-    document.getElementById("reessayer").style.display = "none";
-    canvas.style.opacity = 1;
+    document.getElementById("popupBackground").style.display = "none";
+    document.getElementById("popup").style.display = "none";
     // Réinitialisation du monde
     for (let i = 0; i < world.length; i++) {
         for (let j = 0; j < world.length; j++) {
